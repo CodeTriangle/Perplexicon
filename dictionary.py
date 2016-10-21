@@ -1,20 +1,25 @@
 import json
 
 # Class that handles most of the dictionary stuff.
-class Dictionary:
+class Lexicon:
     def set_dictionary(self, filename="dictionary.json"):
         f = open(filename)
         self.dictionary = json.load(f)
         f.close()
 
     def find_term(self, term, method="index"):
-        return self.dictionary[term]
-
+        if method == "index":
+            return self.dictionary[term]
+        elif method == "word":
+            for i in self.dictionary:
+                if i[0] == term:
+                    return i
+            return None
+            
     def format_term(self, term):
-        data = self.find_term(term)
-        ret = str(data[0]) + " -- "
-        for i in range(1, len(data)):
-            ret += "(" + (data[i][0]) + ") "
-            for j in range(1, len(data[i])):
-                ret += str(j) + ". " + data[i][j] + " "
+        ret = str(term[0]) + " -- "
+        for i in range(1, len(term)):
+            ret += "(" + (term[i][0]) + ") "
+            for j in range(1, len(term[i])):
+                ret += str(j) + ". " + term[i][j] + " "
         return ret
