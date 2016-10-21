@@ -1,5 +1,6 @@
 # Prints any dictionary to command line.
 from dictionary import Lexicon
+from dictionary import format_term
 import argparse
 
 ki = Lexicon()
@@ -13,6 +14,10 @@ args = parser.parse_args()
 ki.set_dictionary(args.dict)
 
 if args.method == None or args.method[0].lower() == "index":
-    print(ki.format_term(ki.find_term(int(args.term))))
+    print(format_term(ki.find_term(int(args.term))))
 elif args.method[0].lower() == "word":
-    print(ki.format_term(ki.find_term(args.term, "word")))
+    print(format_term(ki.find_term(args.term, "word")))
+elif args.method[0].lower() == "word-part":
+    terms = ki.find_term(args.term, "word-part")
+    for i in range(0, len(terms)):
+        print(format_term(terms[i]))
