@@ -1,11 +1,16 @@
 import json
+import sys
 
 # Class that handles most of the dictionary stuff.
 class Lexicon:
     def set_dictionary(self, filename="dictionary.json"):
-        f = open(filename)
-        self.dictionary = json.load(f)
-        f.close()
+        try:
+            f = open(filename)
+            self.dictionary = json.load(f)
+            f.close()
+        except IOError:
+            print("IOError: Lexicon file can't be read")
+            sys.exit()
 
     def find_term(self, query, method="index"):
         if method == "index":
