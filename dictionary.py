@@ -1,5 +1,6 @@
 import json
 
+# Class that handles most of the dictionary stuff.
 class Dictionary:
     def set_dictionary(self, filename="dictionary.json"):
         f = open(filename)

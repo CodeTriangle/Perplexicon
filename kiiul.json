@@ -1,0 +1,9 @@
+[
+  ["uku", ["interjection", "yes"]],
+  ["uki", ["interjection", "no"]],
+  ["cacikili", ["interjection", "hello", "hi"]],
+  ["wa", ["pronoun", "I", "1st person singular"]],
+  ["ju", ["pronoun", "you", "2nd person singular"]],
+  ["ni", ["pronoun", "we", "1st person plural"]],
+  ["wa", ["pronoun", "thing"]]
+]
