@@ -1,3 +1,4 @@
+from template import Template
 import json
 import sys
 
@@ -27,10 +28,14 @@ class Lexicon:
                     results.append(i)
             return results
             
-def format_term(term):
-    ret = str(term[0]) + " -- "
+def format_term(term, temp=Template()):
+    ret = temp.before_term + str(term[0]) + temp.before_defs
     for i in range(1, len(term)):
-        ret += "(" + (term[i][0]) + ") "
+        ret += temp.before_pos + (term[i][0]) + temp.before_list
         for j in range(1, len(term[i])):
-            ret += str(j) + ". " + term[i][j] + " "
+            if temp.use_numbers == True:
+                ret += str(j)
+            ret += temp.before_def + term[i][j] + temp.after_def
+        ret += temp.after_list
+    ret += temp.after
     return ret

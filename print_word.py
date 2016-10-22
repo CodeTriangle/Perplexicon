@@ -1,4 +1,4 @@
-# Prints any dictionary to command line.
+# Prints any definition to command line.
 from dictionary import Lexicon
 from dictionary import format_term
 import argparse
