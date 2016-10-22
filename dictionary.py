@@ -4,30 +4,43 @@ import sys
 
 # Class that handles most of the dictionary stuff.
 class Lexicon:
-    def set_dictionary(self, filename="dictionary.json"):
+    # Set which file a Lexicon object will read from.
+    def set_dictionary(self, filename="lexicon.json"):
+        # Open requested lexicon file.
         try:
             f = open(filename)
             self.dictionary = json.load(f)
             f.close()
+        # Throw error if file doesn't exist.
         except IOError:
             print("IOError: Lexicon file can't be read")
             sys.exit()
-
-    def find_term(self, query, method="index"):
-        if method == "index":
-            return self.dictionary[query]
-        elif method == "word":
-            for i in self.dictionary:
-                if i[0] == query:
-                    return i
-            return None
-        elif method == "word-part":
-            results = []
-            for i in self.dictionary:
-                if i[0].find(query) != -1:
-                    results.append(i)
-            return results
             
+    # Find a specific term and its definitions utilizing different methods
+    def find_term(self, query, method="index"):
+        try:
+            # Return one term using a list index.
+            if method == "index":
+                return self.dictionary[query]
+            # Return one term with query's value.
+            elif method == "word":
+                for i in self.dictionary:
+                    if i[0] == query:
+                        return i
+                return None
+            # Return all terms where the word contains the query's value.
+            elif method == "word-part":
+                results = []
+                for i in self.dictionary:
+                    if i[0].find(query) != -1:
+                        results.append(i)
+                return results
+        # Throw error if definition not found.
+        except TypeError:
+            print("TypeError: No definition found for '%s'" % (args.term))
+            sys.exit()
+            
+# Format a term list into something readable.
 def format_term(term, temp=Template()):
     ret = temp.before_term + str(term[0]) + temp.before_defs
     for i in range(1, len(term)):

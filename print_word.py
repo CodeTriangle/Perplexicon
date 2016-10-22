@@ -14,15 +14,11 @@ args = parser.parse_args()
 
 ki.set_dictionary(args.lex)
 
-try:
-    if args.method == None or args.method[0].lower() == "word-part":
-        terms = ki.find_term(args.term, "word-part")
-        for i in range(0, len(terms)):
-            print(format_term(terms[i]))
-    elif args.method[0].lower() == "word":
-        print(format_term(ki.find_term(args.term, "word")))
-    elif args.method[0].lower() == "index":
-        print(format_term(ki.find_term(int(args.term))))
-except TypeError:
-    print("TypeError: No definition found for '%s'" % (args.term))
-    sys.exit()
+if args.method == None or args.method[0].lower() == "word-part":
+    terms = ki.find_term(args.term, "word-part")
+    for i in range(0, len(terms)):
+        print(format_term(terms[i]))
+elif args.method[0].lower() == "word":
+    print(format_term(ki.find_term(args.term, "word")))
+elif args.method[0].lower() == "index":
+    print(format_term(ki.find_term(int(args.term))))
