@@ -1,4 +1,4 @@
-from template import Template
+from template import *
 import json
 import sys
 
