@@ -1,6 +1,5 @@
 class Template:
-    def __init__(self, name="default", before_term="", before_defs=" -- ", before_pos="(", before_list=") ", use_numbers=True, before_def=". ", after_def=" ", after_list="", after=""):
-        self.name = name
+    def __init__(self, before_term="", before_defs=" -- ", before_pos="(", before_list=") ", use_numbers=True, before_def=". ", after_def=" ", after_list="", after=""):
         self.before_term = before_term
         self.before_defs = before_defs
         self.before_pos = before_pos
@@ -11,4 +10,7 @@ class Template:
         self.after_list = after_list
         self.after = after
         
-multiline = Template(name="multiline", before_defs=":", before_pos="\n  ", before_list="", use_numbers = False, before_def="\n    ", after_list = "\n")
+template_list = dict([
+    ("multiline", Template(before_defs=":", before_pos="\n  ", before_list="", use_numbers = False, before_def="\n    ", after_list = "\n")),
+    ("html", Template(before_term="<b>", before_defs="</b> -- ", before_pos="<i>(", before_list=")</i> ", use_numbers=True, before_def=". ", after="<br>"))
+])
