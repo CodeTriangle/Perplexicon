@@ -5,11 +5,11 @@ import sys
 # Class that handles most of the dictionary stuff.
 class Lexicon:
     # Set which file a Lexicon object will read from.
-    def set_dictionary(self, filename="lexicon.json"):
+    def set_lexicon_file(self, filename):
         # Open requested lexicon file.
         try:
             f = open(filename)
-            self.dictionary = json.load(f)
+            self.lexicon = json.load(f)
             f.close()
         # Throw error if file doesn't exist.
         except IOError:
@@ -21,17 +21,17 @@ class Lexicon:
         try:
             # Return one term using a list index.
             if method == "index":
-                return self.dictionary[query]
+                return self.lexicon[query]
             # Return one term with query's value.
-            elif method == "word":
-                for i in self.dictionary:
+            elif method == "term":
+                for i in self.lexicon:
                     if i[0] == query:
                         return i
                 return None
-            # Return all terms where the word contains the query's value.
-            elif method == "word-part":
+            # Return all terms where the term contains the query's value.
+            elif method == "term-part":
                 results = []
-                for i in self.dictionary:
+                for i in self.lexicon:
                     if i[0].find(query) != -1:
                         results.append(i)
                 return results
