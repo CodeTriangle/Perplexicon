@@ -42,11 +42,11 @@ Open up a command window in your working directory. Different parameters change 
 
 | You type:                                         | What happens:                                                    |
 |---------------------------------------------------|------------------------------------------------------------------|
-| `python print_dict.py`                            | Error telling you that you need a lexicon file.                  |
-| `python print_dict.py lexicon.json`               | Prints every entry in lexicon.json.                              |
-| `python print_dict.py lexicon -q uk`              | Prints every entry in lexicon.json where the term contains "uk". |
-| `python print_dict.py lexicon -q uk -m word`      | Prints the entry in lexicon.json that the term is "uk".          |
-| `python print_dict.py lexicon -q 1 -m index`      | Prints the entry that is found in lexicon.json at that index.    |
-| `python print_dict.py lexicon -q uk -m word-part` | Prints every entry in lexicon.json where the term contains "uk". |
+| `python print_lex.py`                             | Error telling you that you need a lexicon file.                  |
+| `python print_lex.py lexicon.json`                | Prints every entry in lexicon.json.                              |
+| `python print_lex.py lexicon -q uk`               | Prints every entry in lexicon.json where the term contains "uk". |
+| `python print_lex.py lexicon -q uk -m word`       | Prints the entry in lexicon.json that the term is "uk".          |
+| `python print_lex.py lexicon -q 1 -m index`       | Prints the entry that is found in lexicon.json at that index.    |
+| `python print_lex.py lexicon -q uk -m word-part`  | Prints every entry in lexicon.json where the term contains "uk". |
 
 That's basically everything you need to know for Perplexicon.
