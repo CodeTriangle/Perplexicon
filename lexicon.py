@@ -1,5 +1,5 @@
 from template import *
-import json
+from ruamel import yaml
 import sys
 
 # Class that handles most of the dictionary stuff.
@@ -9,7 +9,7 @@ class Lexicon:
         # Open requested lexicon file.
         try:
             f = open(filename)
-            self.lexicon = json.load(f)
+            self.lexicon = yaml.load(f.read())
             f.close()
         # Throw error if file doesn't exist.
         except IOError:
@@ -42,13 +42,13 @@ class Lexicon:
             
 # Format a term list into something readable.
 def format_term(term, temp=Template()):
-    ret = temp.before_term + str(term[0]) + temp.before_defs
-    for i in range(1, len(term)):
-        ret += temp.before_pos + (term[i][0]) + temp.before_list
-        for j in range(1, len(term[i])):
+    ret = temp.before_term + str(term["term"]) + temp.before_defs
+    for i in range(0, len(term["defs"])):
+        ret += temp.before_pos + (term["defs"][i][0]) + temp.before_list
+        for j in range(1, len(term["defs"][i])):
             if temp.use_numbers == True:
                 ret += str(j)
-            ret += temp.before_def + term[i][j] + temp.after_def
+            ret += temp.before_def + term["defs"][i][j] + temp.after_def
         ret += temp.after_list
     ret += temp.after
     return ret

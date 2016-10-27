@@ -4,7 +4,13 @@
 
 A simple but capable system for making conlang lexicons. 
 
-The way Perplexicon will function is so easy that anyone could figure it out. Simply update a single JSON file with new words and you will immediately be able to export them to as many filetypes as you want.
+The way Perplexicon will function is so easy that anyone could figure it out. Simply update a single YAML file with new words and you will immediately be able to export them to as many filetypes as you want.
+
+## Dependencies
+
+You'll need `ruamel.yaml` to parse YAML files. 
+
+    pip install ruamel.yaml
 
 ## Implimented Features:
 
