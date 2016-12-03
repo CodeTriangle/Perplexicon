@@ -1,8 +1,8 @@
 [
-  {term="uku", defs=[["interjection", "yes"]]},
-  {term="uki", defs=[["interjection", "no"]]},
-  {term="cacikili", defs=[["interjection", "hello", "hi"]]},
-  {term="wa", defs=[["pronoun", "I", "1st person singular"]]},
-  {term="ju", defs=[["pronoun", "you", "2nd person singular"]]},
-  {term="ni", defs=[["pronoun", "we", "1st person plural"]]}
+  {"term":"uku", "defs":[["interjection", "yes"]]},
+  {"term":"uki", "defs":[["interjection", "no"]]},
+  {"term":"cacikili", "defs":[["interjection", "hello", "hi"]]},
+  {"term":"wa", "defs":[["pronoun", "I", "1st person singular"]]},
+  {"term":"ju", "defs":[["pronoun", "you", "2nd person singular"]]},
+  {"term":"ni", "defs":[["pronoun", "we", "1st person plural"]]}
 ]

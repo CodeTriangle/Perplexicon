@@ -1,5 +1,5 @@
 from template import *
-from ruamel import yaml
+import json
 import sys
 
 # Class that handles most of the dictionary stuff.
@@ -9,7 +9,7 @@ class Lexicon:
         # Open requested lexicon file.
         try:
             f = open(filename)
-            self.lexicon = yaml.load(f.read())
+            self.lexicon = json.load(f)
             f.close()
         # Throw error if file doesn't exist.
         except IOError:
