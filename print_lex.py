@@ -4,34 +4,41 @@ from template import *
 import argparse
 import sys
 
-ki = lexicon.Lexicon()
+lx = lexicon.Lexicon()
 
 parser = argparse.ArgumentParser(description="Print an entire lexicon or a single term's definitions to the command line.")
 parser.add_argument("lex", help="the lexicon file that should be used (pass a valid JSON filename).")
 parser.add_argument("-q", "--query", nargs=1, help="allows you to enter a query to search. Type the term you are searching for.")
 parser.add_argument("-m", "--method", nargs=1, help="the search method to use.", choices=["index", "term", "term-part"])
 parser.add_argument("-t", "--template", nargs=1, help="which template to use.", choices=["normal", "multiline", "html"])
+parser.add_argument("-o", "--output", nargs=1, help="file to output to.")
 args = parser.parse_args()
 
-ki.set_lexicon_file(args.lex)
+lx.set_lexicon_file(args.lex)
 
-print(template_list["html"])
+fl = "";
 
 if args.query == None:
-    for i in range(0, len(ki.lexicon)):
+    for i in range(0, len(l.lexicon)):
         if args.template != None:
-            print(lexicon.format_term(ki.find_term(i), temp=template_list[args.template[0]]))
+            fl = fl + lexicon.format_term(lx.find_term(i), temp=template_list[args.template[0]])
         else:
-            print(lexicon.format_term(ki.find_term(i)))
+            fl = fl + print(lexicon.format_term(lx.find_term(i))
 else:
     if args.method == None or args.method[0].lower() == "term-part":
-        terms = ki.find_term(args.query[0], "term-part")
+        terms = lx.find_term(args.query[0], "term-part")
         for i in range(0, len(terms)):
-            print(lexicon.format_term(terms[i]))
+            fl = fl + lexicon.format_term(terms[i])
     elif args.method[0].lower() == "term":
-        print(lexicon.format_term(ki.find_term(args.query[0], "term")))
+        fl = fl + lexicon.format_term(lx.find_term(args.query[0], "term"))
     elif args.method[0].lower() == "index":
-        print(lexicon.format_term(ki.find_term(int(args.query[0]))))
+        fl = fl + lexicon.format_term(lx.find_term(int(args.query[0])))
     else:
         print("Invalid search method")
         sys.exit()
+if args.output == None:
+    print(fl)
+else:
+    f = open(args.output[0], "w")
+    f.write(fl)
+    f.close()
