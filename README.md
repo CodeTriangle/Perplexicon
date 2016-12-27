@@ -10,21 +10,19 @@ The way Perplexicon will function is so easy that anyone could figure it out. Si
 
 I have included two sample lexicons from conlangs I've made before. Sajem Tan ([sajem_tan.json](https://github.com/CodeTriangle/Perplexicon/blob/master/sajem_tan.json)) is a language that has all of the traits listed above. In this dictionary are three words that have several different definitions. Some of them need context to make sense due to them being inside jokes, but it's really just a technical demo to test whether the multiple definitions system works. Ki\*iul ([kiiul.json](https://github.com/CodeTriangle/Perplexicon/blob/master/kiiul.json)) is a language where none of these features apply. It's just to show that it works with languages that have one definition per word too.
 
-## Implemented Features:
+## List of Features:
 
-- [x] Ability to specify more than one definition and part of speech for a word/term.
-- [x] Command line interface for opening lexicons.
-- [x] Command line interface for looking up certain definitions.
-- [x] Multiple styles for definitions.
-- [x] Messy Python code!
-
-## Planned Features:
-
-- [ ] Command line interface for editing lexicons.
-- [ ] Graphical interface for opening and editing lexicons.
+- [x] Ability to specify more than one definition and part of speech for a word/term
+- [x] Command line interface
+    - [x] Opens lexicons
+    - [x] Looks up certain definitions
+    - [ ] Edits lexicons
+    - [x] Outputs to file
+- [ ] Graphical interface
+- [x] Multiple styles for definitions
+- [ ] Alphabetizing lexicons
 - [ ] IPA Support
-- [ ] Export to multiple formats.
-- [ ] Clean Python code!
+- [ ] Clean Python code
 
 ## How It Works
 
@@ -49,9 +47,29 @@ Open up a command window in your working directory. Different parameters change 
 | `python print_lex.py` | Error telling you that you need a lexicon file. |
 | `python print_lex.py lexicon.json` | Prints every entry in lexicon.json. |
 | `python print_lex.py lexicon.json -q uk` | Prints every entry in lexicon.json where the term contains "uk". |
-| `python print_lex.py lexicon.json -q uk -m word` | Prints the entry in lexicon.json that the term is "uk". |
-| `python print_lex.py lexicon.json -q 1 -m index` | Prints the entry that is found in lexicon.json at that index. |
-| `python print_lex.py lexicon.json -q uk -m word-part` | Prints every entry in lexicon.json where the term contains "uk". |
-| `python print_lex.py lexicon.json -q uk -m word-part -t html` | Prints every entry in lexicon.json where the term contains "uk" using template HTML. |
+| `python print_lex.py lexicon.json -q uk -m term` | Prints the entry in lexicon.json that the term is "uk" (See [Search Methods](#search-methods) below. |
+| `python print_lex.py lexicon.json -t html` | Prints every entry in lexicon.json using template HTML (See [Templates](#templates) below. |
+| `python print_lex.py lexicon.json -o output.txt` | Prints every entry in lexicon.json to the file output.txt |
 
-That's basically everything you need to know for Perplexicon.
+### Search Methods
+
+When searching for specific terms, there are different ways to get that information.
+
+| Method | Explanation |
+|--------|-------------|
+| `term` | Returns the entry where the term *exactly* matches the query. |
+| `index` | Returns the entry at the specified position. |
+| `term-part` | Returns any entry where the term contains the query. |
+
+### Templates
+
+Perplexicon comes with several different templates from which to choose. These have no functional purpose, but they are useful when exporting to other filetypes.
+
+| Template | Explanation |
+|----------|-------------|
+| `default` | Completely normal template. |
+| `multiline` | Prints each definition on a separate line. |
+| `html` | Adds HTML tags to the default template. |
+| `latex` | Uses same styling as `html`, but for LaTeX. |
+| `webster` | Built to mimic the style Merriam-Webster uses for their dictionaries. |
+| `webster-html` | Like `webster` but with HTML tags. |

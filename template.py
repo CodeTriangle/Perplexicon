@@ -11,6 +11,7 @@ class Template:
         self.after = after
         
 template_list = dict([
+    ("default", Template()),
     ("multiline", Template(before_defs=":", before_pos="\n  ", before_list="", use_numbers = False, before_def="\n    ", after_list = "\n")),
     ("html", Template(before_term="<b>", before_defs="</b> -- ", before_pos="<i>(", before_list=")</i> ", use_numbers=True, after="<br>\n")),
     ("latex", Template(before_term="\\textbf{", before_defs="} -- ", before_pos="\\textit{(", before_list=")} ", use_numbers=True)),
