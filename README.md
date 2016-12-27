@@ -34,15 +34,9 @@ I'll have a better documentation later, but for now, here's how it works.
 
 You'll need to make yourself a lexicon file. The way you do this is by copying this simple template:
 
-    - term: <TERM>
-      ipa: <IPA TRANSCRIPTION>
-      defs:
-      - - <PART OF SPEECH 1>
-        - <DEFINITION 1>
-        - <DEFINITION 2>
-      - - <PART OF SPEECH 2>
-        - <DEFINITION 3>
-        - <DEFINITION 4>
+    [
+        {"term":"TERM", "ipa":"IPA TRANSCRIPTION", "defs":[["PART OF SPEECH 1", "DEFINITION 1", "DEFINITION 2",], ["PART OF SPEECH 2", "DEFINITION 3", "DEFINITION 4"]]}
+    ]
 
 If the term can't function as more than one part of speech, get rid of the second chunk. If it has five parts of speech that it can function as, add a few more blocks. If the term only has one definition, get rid of one of them. If it has ten, add more. It's super easy to make a lexicon file that is both readable and extensible.
 
