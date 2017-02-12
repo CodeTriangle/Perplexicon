@@ -48,7 +48,7 @@ class lexicon:
             sys.exit()
 
     # Format a term list into something readable.
-    def format_term(self, term, temp="default"):
+    def format_term(self, term, temp=template()):
         if str(type(temp)) == "<class 'str'>":
             template = template_list[temp]
         elif str(type(temp)) == "<class 'template.template'>":
