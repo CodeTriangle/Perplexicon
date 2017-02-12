@@ -64,11 +64,11 @@ For example, if [*parecer*](http://www.spanishdict.com/translate/parecer) is the
 
 But, if it can also mean "to look" and "to appear" you would add them as such.
 
-   {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"]]}
+    {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"]]}
 
 If it can also be used to mean "opinion", then:
 
-   {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"], ["noun", "opinion"]]}
+    {"term":"parecer", "defs":[["verb", "to seem", "to look", "to appear"], ["noun", "opinion"]]}
 
 ## Command Line
 
